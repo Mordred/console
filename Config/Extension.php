@@ -11,8 +11,8 @@
 namespace Nella\Console\Config;
 
 use Nette\DI\Container,
-	Nette\Config\Compiler,
-	Nette\Config\Configurator,
+	Nette\DI\Compiler,
+	Nette\Configurator,
 	Symfony\Component\Console\Helper\HelperSet,
 	Symfony\Component\Console\Helper\DialogHelper,
 	Symfony\Component\Console\Application;
@@ -22,7 +22,7 @@ use Nette\DI\Container,
  *
  * @author	Patrik Votoček
  */
-class Extension extends \Nette\Config\CompilerExtension
+class Extension extends \Nette\DI\CompilerExtension
 {
 	const DEFAULT_EXTENSION_NAME = 'console',
 		COMMAND_TAG_NAME = 'consoleCommand',
@@ -114,7 +114,7 @@ class Extension extends \Nette\Config\CompilerExtension
 	/**
 	 * Register extension to compiler.
 	 *
-	 * @param \Nette\Config\Configurator
+	 * @param \Nette\Configurator
 	 * @param string
 	 */
 	public static function register(Configurator $configurator, $name = self::DEFAULT_EXTENSION_NAME)
