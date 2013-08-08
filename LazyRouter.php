@@ -28,13 +28,13 @@ class LazyRouter extends Router
 	{
 		if (!$serviceName) {
 			$class = 'Symfony\Component\Console\Application';
-			$lower = ltrim(strtolower($class), '\\');
-			if (!isset($container->classes[$lower])) {
+			$names = $container->findByType($class);
+			if (!$names) {
 				throw new \Nette\DI\MissingServiceException("Service of type $class not found.");
-			} elseif ($container->classes[$lower] === FALSE) {
+			} elseif (count($names) > 1) {
 				throw new \Nette\DI\MissingServiceException("Multiple services of type $class found.");
 			} else {
-				$serviceName = $container->classes[$lower];
+				$serviceName = $names[0];
 			}
 		}
 
